@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Application Home</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(200, 150, 106);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: peachpuff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Header Style */
+        .card h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Button Style */
+        .card a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: rgb(200, 150, 106);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .card a:hover {
+            background-color: rgb(193, 125, 66);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome to the SMS Application</h1>
+        <p>Click the button below to send an SMS.</p>
+        <a href="/sms/send-sms/">Send SMS</a>
+    </div>
+</body>
+</html>

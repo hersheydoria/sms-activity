@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send SMS</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(200, 150, 106);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: peachpuff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Header Style */
+        .card h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        .card form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card label {
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card input,
+        .card textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .card button {
+            background-color: rgb(200, 150, 106);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .card button:hover {
+            background-color: rgb(193, 125, 66);
+        }
+
+        /* Success Message Style */
+        .success-message {
+            color: #28a745;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Retry Link Style */
+        .retry-link {
+            text-decoration: none;
+            color:  peru;
+            font-size: 14px;
+        }
+
+        .retry-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 12px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        .try-again-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            background-color: #f0ad4e;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .try-again-link:hover {
+            background-color: #ec971f;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Send an SMS</h1>
+        {% if result %}
+            <p class="success-message">{{ result }}</p>
+            <a href="{% url 'send_sms' %}" class="retry-link">Send another SMS</a>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Phone Number Field -->
+            <label for="id_phone_number">Phone Number {{ form.phone_number }}</label>
+            {% if form.phone_number.errors %}
+                <p class="error-message">{{ form.phone_number.errors.0 }}</p>
+                <a href="{% url 'send_sms' %}" class="try-again-link">Try Again</a>
+            {% endif %}
+            
+            <!-- Message Field -->
+            <label for="id_message">Message</label>
+            {{ form.message }}
+            {% if form.message.errors %}
+                <p class="error-message">{{ form.message.errors.0 }}</p>
+            {% endif %}
+            
+            <button type="submit">Send SMS</button>
+        </form>        
+        {% endif %}
+    </div>
+</body>
+</html>
