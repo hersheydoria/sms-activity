@@ -48,7 +48,8 @@
         }
 
         .card input,
-        .card textarea {
+        .card textarea,
+        .card select {
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -80,7 +81,7 @@
         /* Retry Link Style */
         .retry-link {
             text-decoration: none;
-            color:  peru;
+            color: peru;
             font-size: 14px;
         }
 
@@ -105,6 +106,7 @@
             border-radius: 4px;
             font-size: 12px;
         }
+
         .try-again-link:hover {
             background-color: #ec971f;
         }
@@ -120,20 +122,36 @@
         <form method="post">
             {% csrf_token %}
             
+            <!-- Template Dropdown -->
+            <label for="id_template">Template</label>
+            {{ form.template }}
+
             <!-- Phone Number Field -->
-            <label for="id_phone_number">Phone Number {{ form.phone_number }}</label>
+            <label for="id_phone_number">Phone Number</label>
+            {{ form.phone_number }}
             {% if form.phone_number.errors %}
                 <p class="error-message">{{ form.phone_number.errors.0 }}</p>
-                <a href="{% url 'send_sms' %}" class="try-again-link">Try Again</a>
             {% endif %}
-            
+
             <!-- Message Field -->
             <label for="id_message">Message</label>
             {{ form.message }}
             {% if form.message.errors %}
                 <p class="error-message">{{ form.message.errors.0 }}</p>
             {% endif %}
-            
+
+            <!-- Schedule Time Field (Optional) -->
+            <label for="id_scheduled_time">Scheduled Time (optional)</label>
+            {{ form.scheduled_time }}
+            {% if form.scheduled_time.errors %}
+                <p class="error-message">{{ form.scheduled_time.errors.0 }}</p>
+            {% endif %}
+
+            <!-- Schedule Checkbox -->
+            <label for="id_schedule_sms">
+                <input type="checkbox" id="id_schedule_sms" name="schedule_sms" value="1" {% if form.schedule_sms.value %}checked{% endif %}> Schedule this message?
+            </label>
+
             <button type="submit">Send SMS</button>
         </form>        
         {% endif %}
