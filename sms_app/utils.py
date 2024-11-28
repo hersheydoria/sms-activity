@@ -16,7 +16,14 @@ def send_sms(to_number, message):
         }
     )
 
+    # Ensure a consistent return format
     if response["messages"][0]["status"] == "0":
-        return "Message sent successfully."
+        return {
+            "status": "0",
+            "message": "Message sent successfully."
+        }
     else:
-        return f"Message failed with error: {response['messages'][0]['error-text']}"
+        return {
+            "status": response["messages"][0]["status"],
+            "error": response["messages"][0].get("error-text", "Unknown error.")
+        }

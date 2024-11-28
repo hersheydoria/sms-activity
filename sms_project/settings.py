@@ -128,8 +128,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-VONAGE_API_KEY = '224e43de'
-VONAGE_API_SECRET = '8X7mk9v5cdOEAnNn'
+from decouple import config
+
+VONAGE_API_KEY = config("VONAGE_API_KEY")
+VONAGE_API_SECRET = config("VONAGE_API_SECRET")
+
 
 # Celery settings
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
