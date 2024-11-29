@@ -1,6 +1,6 @@
-*Django SMS Application*
+Django SMS Application
 
-This is a simple Django web application that allows users to send SMS messages using the Vonage SMS API. The application includes input validation, the ability to send predefined templates, and scheduling for periodic SMS sending. The templates allow users to select common message types (e.g., "Welcome", "Promotions") to streamline the message creation process.
+This is a simple Django web application that allows users to send SMS messages using the Vonage SMS API. The application includes input validation, the ability to send predefined templates, and scheduling for periodic SMS sending. The templates allow users to select common message types (e.g., "Survey Reminder", "Order Shipped") to streamline the message creation process.
 
 Features:
 - Send SMS messages to predefined registered phone numbers.
@@ -21,7 +21,7 @@ Prerequisites:
 - Redis for Celery message brokering
 - Celery worker and beat services running
 
-*How It Works:*
+How It Works:
 
 Home Page:
 - Accessible at http://127.0.0.1:8000/.
@@ -35,7 +35,7 @@ Send SMS Page:
 - An optional scheduled time for sending the SMS.
 
 Predefined Templates:
-- Users can select from predefined templates when composing the SMS message. These templates can include common messages such as "Welcome", "Promotions", etc.
+- Users can select from predefined templates when composing the SMS message. These templates can include common messages such as "Survey Reminder", "Order Shipped", etc.
 - The templates are displayed in a dropdown list and are prefilled in the message field.
   
 Validation:
@@ -52,12 +52,12 @@ Scheduled SMS:
 Usage:
 - Open the home page at http://127.0.0.1:8000/ and click the "Send SMS" button.
 - Select a predefined template or enter a custom message.
-- Enter one of the registered numbers (e.g., +639700919275 or +639074833701).
+- Enter one of the registered numbers (e.g., +639700919275).
 - Check the checkbox for a scheduled message (optional).
 - Submit the form.
 - View success or error messages as applicable.
 
-*How to Execute / Run*
+How to Execute / Run
 - Find the redis folder (path) and open cmd.
 - Execute or run the "redis-server.exe" (don't close the cmd).
 - Open Visual Studio Code terminal and execute the celery worker "celery -A sms_project worker --loglevel=info -P solo".
