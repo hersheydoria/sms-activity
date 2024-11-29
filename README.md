@@ -1,4 +1,4 @@
-**Django SMS Application**
+*Django SMS Application*
 
 This is a simple Django web application that allows users to send SMS messages using the Vonage SMS API. The application includes input validation, the ability to send predefined templates, and scheduling for periodic SMS sending. The templates allow users to select common message types (e.g., "Welcome", "Promotions") to streamline the message creation process.
 
@@ -19,10 +19,9 @@ Prerequisites:
 - A Vonage account and API key/secret
 - Celery for background task handling
 - Redis for Celery message brokering
-- A Vonage account and API key/secret
 - Celery worker and beat services running
 
-**How It Works:**
+*How It Works:*
 
 Home Page:
 - Accessible at http://127.0.0.1:8000/.
@@ -58,3 +57,9 @@ Usage:
 - Submit the form.
 - View success or error messages as applicable.
 
+*How to Execute / Run*
+- Find the redis folder (path) and open cmd.
+- Execute or run the "redis-server.exe" (don't close the cmd).
+- Open Visual Studio Code terminal and execute the celery worker "celery -A sms_project worker --loglevel=info -P solo".
+- In another terminal, execute the celery beat "celery -A sms_project beat --loglevel=info".
+- Lastly, in another terminal, run the server using this command "python manage.py runserver".
