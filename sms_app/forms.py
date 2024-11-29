@@ -20,7 +20,7 @@ class SMSForm(forms.Form):
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
-        allowed_numbers = ['+639918815563']
+        allowed_numbers = ['+639700919275']
         if phone_number not in allowed_numbers:
             raise forms.ValidationError(
                 f"Only the following numbers are allowed: {', '.join(allowed_numbers)}."
